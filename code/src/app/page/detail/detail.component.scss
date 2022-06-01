@@ -1,0 +1,257 @@
+section {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+}
+.lable-space{
+  padding: 40px;
+}
+
+.title-detail{
+  border-bottom: 2px solid #ddd ;
+  margin-bottom: 20px;
+  p{
+    font-size: 18px;
+    margin: 0;
+  }
+}
+
+.content-detail{
+  display: flex;
+  .detail-left{
+    width: 100%;
+    height: auto;
+
+    .carousel-detail-product{
+      height: 400px;
+      .carousel-item{
+        img{
+          height: 400px;
+          object-fit: contain;
+        }
+      }
+    }
+  }
+  .detail-right{
+    width: 80%;
+    height: auto;
+    .box-right-content{
+      padding-left: 10px;
+      .small-title{
+        border-bottom: 1px solid #ddd;
+        p{
+          font-size: 14px;
+          margin: 0;
+          line-height: 30px;
+        }
+      }
+      .price-detail{
+        display: flex;
+        padding-top: 20px;
+        .price{
+          font-size: 23px;
+          color: rgb(194, 0, 0);
+          font-weight: bold;
+        }
+        .old-price{
+          font-size: 13px;
+          text-decoration: line-through;
+          line-height: 40px;
+        }
+        p{
+          padding-right: 10px;
+          margin-bottom:0;
+        }
+      }
+      .status{
+        p{
+          font-size: 14px;
+        }
+      }
+      .quantity{
+        display: flex;
+        p{
+          font-size: 14px;
+          margin: 0;
+          line-height: 30px;
+        }
+      }
+      .cart-detail{
+        margin-top: 20px;
+        button{
+          background: #2196f3;
+          border-color: #2196f3;
+          width: 100%;
+          border-radius: 3px;
+          display: flex;
+          justify-content: flex-start;
+          span{
+            margin: auto;
+          }
+          i{
+            padding-right: 10px;
+            font-size: 25px;
+            border-right: 1px solid;
+          }
+        }
+
+      }
+      .description-detail{
+        margin-top: 25px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ddd;
+        p{
+          font-size: 14px;
+          margin-bottom: 0;
+
+        }
+        .mota{
+          padding-top: 10px;
+        }
+      }
+      .ho-tro{
+        margin-top: 10px;
+        display: flex;
+        font-size: 14px;
+        a{
+          color: #007bff;
+        }
+      }
+    }
+  }
+
+
+}
+.box-control-detail{
+  display: flex;
+  .thong-tin-them{
+    width: 100%;
+    margin-top: 20px;
+    .title{
+      font-size: 20px;
+      color: #2196f3;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 0;
+    }
+    .lines-lable{
+      border: 1px solid #ddd;
+      margin-top: 5px;
+      margin-bottom: 20px;
+    }
+    .detail-about-product{
+      margin-bottom: 50px;
+      .body-specs{
+        .btn__pre{
+          border-color:#2196f3 ;
+          color: #2196f3;
+          border-radius: 5px;
+          height: 40px;
+          width: 100%;
+        }
+        ul{
+          list-style-type: none;
+          padding:0;
+          margin: 0;
+          li:nth-child(even){
+            background: #fff;
+          }
+          li:nth-child(odd){
+            background: #f7f7f7;
+          }
+          li{
+            display: flex;
+            padding-left: 10px;
+            line-height: 40px;
+            background: #fafafa;
+            span{
+              width: 35%;
+            }
+          }
+        }
+      }
+    }
+  }
+  .san-pham-tuong-tu{
+    width: 35%;
+    padding: 15px;
+    .title-sp-lienquan{
+      p{
+        color: #333;
+        font-weight: bold;
+      }
+    }
+    .box-pd{
+      display: flex;
+      width: 100%;
+      height: auto;
+      padding-bottom: 10px;
+      padding-top: 10px;
+      border-bottom: 1px solid #ddd;
+      img{
+        width: 120px;
+        height: 80px;
+      }
+      .text-content{
+        padding-left: 10px;
+        .name-product{
+          a:hover{
+            color: #2196f3;
+          }
+        }
+        .brand-tc{
+          color: #007bff;
+        }
+        p{
+          font-size: 14px;
+          margin-bottom: 8px;
+        }
+        .price-tc{
+          color: rgb(226, 0, 0);
+          font-weight: bold;
+          font-size: 15px;
+          span{
+            text-decoration: line-through;
+            color: #333;
+            font-weight: normal;
+            font-size: 13px;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width:600px) {
+  .content-detail{
+    display: block;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .box-control-detail{
+    display: block;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .title-detail{
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .content-detail .detail-right {
+    width: 100%;
+  }
+  .box-control-detail .thong-tin-them .detail-about-product .body-specs ul li span {
+    width: 50%;
+  }
+
+  .body-specs .information ul li span {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width:480px) {
+
+}
+
+

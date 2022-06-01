@@ -1,0 +1,48 @@
+<nz-tabset [nzTabPosition]="'left'">
+  <nz-tab nzTitle="Đăng nhập">
+
+    <form>
+      <div class="form-group">
+        <label><span style="color: red;">*</span> Tên đăng nhập</label>
+        <input type="text" class="form-control wd">
+      </div>
+      <div class="form-group">
+        <label><span style="color: red;">*</span> Mật khẩu</label>
+        <input type="password" class="form-control wd">
+      </div>
+      <div class="form-group" style="display: flex; justify-content: space-between;">
+          <div></div>
+          <button nz-button  [nzSize]="'default'" nzType="primary">Đăng nhập</button>
+      </div>
+
+    </form>
+
+  </nz-tab>
+
+  <nz-tab nzTitle="Đăng ký">
+
+    <form>
+      <div class="form-group">
+        <label><span style="color: red;">*</span> Họ tên</label>
+        <input type="text" class="form-control wd">
+      </div>
+      <div class="form-group">
+        <label><span style="color: red;">*</span> Tên đăng nhập</label>
+        <input type="text" class="form-control wd">
+      </div>
+      <div class="form-group">
+        <label><span style="color: red;">*</span> Mật khẩu</label>
+        <input type="password" class="form-control wd">
+      </div>
+      <div class="form-group">
+        <label><span style="color: red;">*</span>Nhập lại mật khẩu</label>
+        <input type="password" class="form-control wd">
+      </div>
+      <div class="form-group" style="display: flex; justify-content: space-between;">
+        <div></div>
+        <button nz-button  [nzSize]="'default'" nzType="primary">Đăng ký ngay!!</button>
+      </div>
+    </form>
+
+  </nz-tab>
+</nz-tabset>

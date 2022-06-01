@@ -1,0 +1,211 @@
+<section>
+  <!-- main content  -->
+  <div class="main__content">
+    <div class="flash-sales-box">
+      <!-- start flash banner  -->
+      <div class="flash-banner">
+        <p>
+          <i nz-icon nzType="thunderbolt" nzTheme="fill"></i>
+          <span>Flash Sale</span>
+        </p>
+      </div>
+      <!-- end flash banner  -->
+      <!-- start main flash product  -->
+      <div class="flash-products">
+        <!-- single product item  -->
+        <div class="product-item" *ngFor="let item of getOfProductData">
+          <div class="item">
+            <a [routerLink]="['/may-lanh', item.id]">
+              <div class="lable-item" *ngFor="let brand of getOfBrandData">
+                <div class="img-lable-item" *ngIf="item.branD_ID == brand.id">
+                  <a [routerLink]="['/thuong-hieu', item.branD_ID]"
+                    ><img [src]="brand.image" alt=""
+                  /></a>
+                </div>
+                <div>
+                  <span *ngIf="item.branD_ID == brand.id"
+                    >Sale {{ item.sale }}%</span
+                  >
+                </div>
+              </div>
+              <div class="img-item">
+                <img [src]="item.image" alt="" />
+              </div>
+              <div class="result-item-sale"></div>
+              <h3>{{ item.name }}</h3>
+              <div class="mini-option">
+                <div class="getOp">
+                  <span *ngFor="let op1 of getOfOption1Data">{{
+                    op1.id === item.optioN1_ID ? op1.name : ""
+                  }}</span>
+                </div>
+                <div class="getOp">
+                  <span *ngFor="let op2 of getOfOption2Data">{{
+                    op2.id === item.optioN2_ID ? op2.name : ""
+                  }}</span>
+                </div>
+                <div class="getOp">
+                  <span *ngFor="let op3 of getOfOption3Data">{{
+                    op3.id === item.optioN3_ID ? op3.name : ""
+                  }}</span>
+                </div>
+              </div>
+              <div class="brand-item" *ngFor="let brand of getOfBrandData">
+                <a href="#" *ngIf="item.branD_ID === brand.id">{{
+                  brand.name
+                }}</a>
+              </div>
+              <div class="price-item">
+                <p class="price">{{ item.price | currency: "VND" }}</p>
+                <p class="old-price">
+                  {{
+                    item.olD_PRICE === 0
+                      ? ""
+                      : (item.olD_PRICE | currency: "VND")
+                  }}
+                </p>
+              </div>
+              <div class="vote-item">
+                <!-- <nz-rate [(ngModel)]="value" [nzTooltips]="tooltips"></nz-rate>
+                <span *ngIf="value" class="ant-rate-text">{{ value }}</span> -->
+              </div>
+            </a>
+          </div>
+        </div>
+        <!-- end single product item -->
+      </div>
+      <!-- end main flash product  -->
+      <!-- button item view all product  -->
+      <div class="view-products-item">
+        <!-- <div class="button-item">
+          <a href="#">
+            <div class="txt-item">
+              Xem tất cả
+              <i nz-icon nzType="caret-right" nzTheme="outline"></i>
+            </div>
+          </a>
+        </div> -->
+      </div>
+      <!-- end button item  -->
+    </div>
+    <div class="box-product">
+      <div class="wrap">
+        <div class="flex-item-left">
+          <a
+            class=""
+            [ngClass]="{ active: tab === i }"
+            nz-button
+            nzType="default"
+            *ngFor="let item of getOfBrandData; let i = index"
+            (click)="tab = i"
+          >
+            {{ item.name }}
+          </a>
+        </div>
+        <div class="flex-item-right">
+          <a href="#">
+            Xem tất cả
+            <span *ngIf="countProduct > 0">{{ countProduct }}</span> sản phẩm
+            <i nz-icon nzType="right" nzTheme="outline"></i
+          ></a>
+        </div>
+      </div>
+      <div class="home-product">
+        <!-- product item  -->
+        <div class="product-item">
+          <div class="item">
+            <a [routerLink]="['/may-lanh']">
+              <div class="lable-item">
+                <div><span>Sale 0%</span></div>
+              </div>
+              <div class="img-item">
+                <img [src]="'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa5hVl8lGYwiHlXuWrN4Xr65yYr1XKkS56WUCgrWg1-_ljwviUh51GOLOOhGE_d68UwLo&usqp=CAU'" alt="dấdasda" />
+              </div>
+              <div class="result-item-sale"></div>
+              <h3>Sản phẩm 1</h3>
+              <div class="mini-option">
+                <div class="getOp"><span>abcd</span></div>
+                <div class="getOp"><span>aaaa</span></div>
+              </div>
+              <div class="brand-item">
+                <a href="#">tên danh mục</a>
+              </div>
+              <div class="price-item">
+                <p class="price">5000000</p>
+                <p class="old-price">7000000</p>
+              </div>
+              <div class="vote-item">
+                <!-- <nz-rate [(ngModel)]="value" [nzTooltips]="tooltips"></nz-rate>
+                <span *ngIf="value" class="ant-rate-text">{{ value }}</span> -->
+              </div>
+            </a>
+          </div>
+        </div>
+        <!-- product item  -->
+        <div class="product-item">
+          <div class="item">
+            <a [routerLink]="['/may-lanh']">
+              <div class="lable-item">
+                <div><span>Sale 0%</span></div>
+              </div>
+              <div class="img-item">
+                <img [src]="'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa5hVl8lGYwiHlXuWrN4Xr65yYr1XKkS56WUCgrWg1-_ljwviUh51GOLOOhGE_d68UwLo&usqp=CAU'" alt="dấdasda" />
+              </div>
+              <div class="result-item-sale"></div>
+              <h3>Sản phẩm 1</h3>
+              <div class="mini-option">
+                <div class="getOp"><span>abcd</span></div>
+                <div class="getOp"><span>aaaa</span></div>
+              </div>
+              <div class="brand-item">
+                <a href="#">tên danh mục</a>
+              </div>
+              <div class="price-item">
+                <p class="price">5000000</p>
+                <p class="old-price">7000000</p>
+              </div>
+              <div class="vote-item">
+                <!-- <nz-rate [(ngModel)]="value" [nzTooltips]="tooltips"></nz-rate>
+                        <span *ngIf="value" class="ant-rate-text">{{ value }}</span> -->
+              </div>
+            </a>
+          </div>
+        </div>
+        <!-- product item  -->
+        <div class="product-item">
+          <div class="item">
+            <a [routerLink]="['/may-lanh']">
+              <div class="lable-item">
+                <div><span>Sale 0%</span></div>
+              </div>
+              <div class="img-item">
+                <img [src]="'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa5hVl8lGYwiHlXuWrN4Xr65yYr1XKkS56WUCgrWg1-_ljwviUh51GOLOOhGE_d68UwLo&usqp=CAU'" alt="dấdasda" />
+              </div>
+              <div class="result-item-sale"></div>
+              <h3>Sản phẩm 1</h3>
+              <div class="mini-option">
+                <div class="getOp"><span>abcd</span></div>
+                <div class="getOp"><span>aaaa</span></div>
+              </div>
+              <div class="brand-item">
+                <a href="#">tên danh mục</a>
+              </div>
+              <div class="price-item">
+                <p class="price">5000000</p>
+                <p class="old-price">7000000</p>
+              </div>
+              <div class="vote-item">
+                <!-- <nz-rate [(ngModel)]="value" [nzTooltips]="tooltips"></nz-rate>
+                <span *ngIf="value" class="ant-rate-text">{{ value }}</span> -->
+              </div>
+            </a>
+          </div>
+        </div>
+        <!-- button item view all product  -->
+        <div class="view-products-item"></div>
+        <!-- end button item  -->
+      </div>
+    </div>
+  </div>
+  <!-- end main content  -->
+</section>

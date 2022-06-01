@@ -1,0 +1,21 @@
+
+<div class="slAPI" >
+  <ul>
+    <li *ngFor="let item of brandData" ><a [href]="'/thuong-hieu/'+item.id" *ngIf="brlength > 0">
+      <div class="image_item">
+        <img [src]="item.image" alt="">
+      </div>
+    </a></li>
+    <li *ngFor="let item of option3Data" ><button nz-button nzType="primary" [nzSize]="size" *ngIf="op3length > 0">
+      {{item.name}}
+    </button></li>
+    <li *ngFor="let item of option2Data" ><button nz-button nzType="primary" [nzSize]="size" *ngIf="op2length > 0">
+      {{item.name}}
+    </button></li>
+    <li *ngFor="let item of optionData" ><button nz-button nzType="primary" [nzSize]="size" *ngIf="op1length > 0">
+      {{item.name}}
+    </button></li>
+  </ul>
+</div>
+
+

@@ -1,0 +1,16 @@
+<div class="loai1">
+  <div class="item-cate">
+    <p>Hãng điều hòa: </p>
+    <ul>
+      <li *ngFor="let item of listOfBrand"><a [href]="'/thuong-hieu/' + item.id">{{item.name}}</a></li>
+    </ul>
+    <br>
+    <p>Kiểu điều hòa: </p>
+    <ul>
+      <li *ngFor="let item of getOfOption1Data"><a href="#">{{item.name}}</a></li>
+      <li *ngFor="let item of getOfOption2Data"><a href="#">{{item.name}}</a></li>
+      <li *ngFor="let item of getOfOption3Data"><a href="#">{{item.name}}</a></li>
+    </ul>
+  </div>
+</div>
+<a href="/danh-muc" class="all-cate">Xem tất cả nhóm hàng > </a>

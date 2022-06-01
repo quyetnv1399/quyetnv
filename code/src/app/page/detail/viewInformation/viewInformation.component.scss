@@ -1,0 +1,72 @@
+.body-specs{
+  .information{
+
+    .btn__pre{
+      border-color:#f52c9a ;
+      color: #f52c9a;
+      border-radius: 5px;
+      height: 40px;
+      width: 100%;
+    }
+    ul{
+      list-style-type: none;
+      padding:0;
+      margin: 0;
+      li:nth-child(even){
+        background: #fff;
+      }
+      li:nth-child(odd){
+        background: #f7f7f7;
+      }
+      li{
+        display: flex;
+        padding-left: 10px;
+        line-height: 40px;
+        background: #fafafa;
+        span{
+          width: 35%;
+        }
+      }
+    }
+  }
+  .parameter{
+
+    .btn__pre{
+      border-color:#f52c9a ;
+      color: #f52c9a;
+      border-radius: 5px;
+      height: 40px;
+      width: 100%;
+    }
+    ul{
+      list-style-type: none;
+      padding:0;
+      margin: 0;
+      li:nth-child(even){
+        background: #fff;
+      }
+      li:nth-child(odd){
+        background: #f7f7f7;
+      }
+      li{
+        display: flex;
+        padding-left: 10px;
+        line-height: 40px;
+        background: #fafafa;
+        span{
+          width: 35%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width:600px) {
+  .body-specs .information ul li span {
+    width: 50%;
+  }
+
+  .body-specs .parameter ul li span {
+    width: 50%;
+}
+}

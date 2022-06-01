@@ -1,0 +1,40 @@
+
+.loai1{
+  p{
+    font-weight: 600;
+    font-size: 14px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+  }
+  .item-cate{
+    ul{
+      display: flex;
+      flex-wrap: wrap;
+    }
+    ul li{
+      list-style-type: none;
+      width:  90px;
+      height: 40px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      line-height: 40px;
+      text-align: center;
+      cursor: pointer;
+      a{
+        color: #333;
+        font-size: 13px;
+        display: block;
+        height: 40px;
+      }
+      a:hover {
+        background: #aad7fc;
+      }
+    }
+  }
+}
+.all-cate{
+  color: rgb(0, 126, 243);
+  font-size: 13px;
+}

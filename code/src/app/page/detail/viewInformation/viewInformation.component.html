@@ -1,0 +1,43 @@
+<div class="body-specs">
+  <div class="information">
+    <b>Thông tin sản phẩm</b>
+    <ul *ngIf="getFindOProductId">
+      <li><span>Loại máy</span> <div>{{getFindOProductId.loaI_MAY}}</div></li>
+      <li><span>Inverter:</span> <span *ngIf="findOneDataProduct">
+          <p *ngFor="let item of getOpt3">
+            {{item.id === findOneDataProduct.optioN3_ID ? item.name : ""}}
+          </p>
+        </span>
+      </li>
+      <li><span>Công suất làm lạnh:</span> <span>{{getFindOProductId.conG_SUAT}}</span></li>
+      <li><span>Phạm vi làm lạnh hiệu quả:</span> <span>{{getFindOProductId.phamvI_HIEUQUA}}</span></li>
+      <li><span>Công suất sưởi ấm:</span> <span>{{getFindOProductId.congsuaT_SUOIAM}}</span></li>
+      <li><span>Lọc bụi, kháng khuẩn, khử mùi:</span> <span>{{getFindOProductId.chucnanG_LOC}}</span></li>
+      <li><span>Công nghệ làm lạnh nhanh:</span> <span>{{getFindOProductId.laM_LANH}}</span></li>
+      <li><span>Tiện ích:</span> <span>{{getFindOProductId.tieN_ICH}}</span></li>
+      <li><span>Tiêu thụ điện:</span> <span>{{getFindOProductId.tieuthU_DIEN}}</span></li>
+      <li><span>Nhãn năng lượng:</span> <span>{{getFindOProductId.nhaN_NANGLUONG}}</span></li>
+      <li><span>Chế độ gió:</span> <span>{{getFindOProductId.chedO_GIO}}</span></li>
+      <li><span>Độ ồn trung bình:</span> <span>{{getFindOProductId.ondinH_TRUNGBINH}}</span></li>
+      <li><span>Chất liệu dàn tản nhiệt:</span> <span>{{getFindOProductId.chatlieU_TANNHIET}}</span></li>
+      <li><span>Loại Gas:</span> <span>{{getFindOProductId.gas}}</span></li>
+      <li><span>Sản xuất tại:</span> <span>{{getFindOProductId.saN_XUAT}}</span></li>
+      <li><span>Dòng sản phẩm:</span> <span>{{getFindOProductId.donG_SANPHAM}}</span></li>
+      <li><span>Thời gian bảo hành cục lạnh:</span> <span>{{getFindOProductId.baohanH_CUCLANH}}</span></li>
+      <li><span>Thời gian bảo hành cục nóng:</span> <span>{{getFindOProductId.baohanH_CUCNONG}}</span></li>
+    </ul>
+  </div>
+  <br>
+  <br>
+  <div class="parameter">
+    <b>Thông số kỹ thuật/ lắp đặt</b>
+    <ul *ngIf="getFindOIProductId">
+      <li><span>Kích thước - khối lượng dàn lạnh:</span> <span>{{getFindOIProductId.sizE_DAN_LANH}}</span></li>
+      <li><span>Kích thước - Khối lượng dàn nóng:</span> <span>{{getFindOIProductId.sizE_DAN_NONG}}</span></li>
+      <li><span>Chiều dài lắp đặt ống đồng:</span> <span>{{getFindOIProductId.widtH_LAP_DAT_ONG_DONG}}</span></li>
+      <li><span>Chiều cao lắp đặt tối đa giữa cục nóng-lạnh:</span> <span>{{getFindOIProductId.heighT_LAP_DAT_CUC_NONGLANH}}</span></li>
+      <li><span>Dòng điện vào:</span> <span>{{getFindOIProductId.dongdieN_VAO}}</span></li>
+      <li><span>Kích thước ống đồng:</span> <span>{{getFindOIProductId.sizE_ONG_DONG}}</span></li>
+    </ul>
+  </div>
+</div>
