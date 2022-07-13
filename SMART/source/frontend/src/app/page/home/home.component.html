@@ -1,0 +1,151 @@
+<section>
+  <!-- main content  -->
+  <div class="main__content">
+
+    <div class="flash-sales-box">
+      <!-- start flash banner  -->
+      <div class="flash-banner">
+        <p><i nz-icon nzType="thunderbolt" nzTheme="fill" ></i> <span>Flash Sale</span></p>
+      </div>
+      <!-- end flash banner  -->
+      <!-- start main flash product  -->
+      <owl-carousel-o [options]="customOptions">
+        <ng-template carouselSlide *ngFor="let item of getOfProductData">
+          <div class="flash_product">
+            <div class="product-item" >
+              <div class="item">
+                <a [routerLink]="['/dien-thoai', item.id]">
+                  <div class="lable-item" >
+                    <div><span>Sale 0%</span></div>
+                  </div>
+                  <div class="img-item">
+                    <img
+                      [src]="item.image"
+                      alt=""
+                    />
+                  </div>
+                  <div class="result-item-sale"></div>
+                  <h3>{{item.name}}</h3>
+                  <div class="mini-option">
+                  </div>
+                  <div class="brand-item" *ngFor="let brand of getOfBrandData">
+                    <a href="#" *ngIf="item.branD_ID === brand.id">{{brand.name}}</a>
+                  </div>
+                  <div class="price-item">
+                    <p class="price">{{item.saleprice === 0 ? (item.price | currency: "VND") : (item.saleprice | currency: "VND") }}</p>
+                    <p class="old-price">{{item.saleprice === 0 ? "" : item.price | currency: "VND"}}</p>
+                  </div>
+                  <div class="vote-item">
+                    <!-- <nz-rate [(ngModel)]="value" [nzTooltips]="tooltips"></nz-rate>
+                    <span *ngIf="value" class="ant-rate-text">{{ value }}</span> -->
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+
+
+      </owl-carousel-o>
+
+      <!-- end main flash product  -->
+      <!-- button item view all product  -->
+      <div class="view-products-item">
+        <!-- <div class="button-item">
+          <a href="#">
+            <div class="txt-item">
+              Xem tất cả
+              <i nz-icon nzType="caret-right" nzTheme="outline"></i>
+            </div>
+          </a>
+        </div> -->
+      </div>
+      <!-- end button item  -->
+
+    </div>
+
+
+
+
+    <div class="flash-sales-box2">
+      <!-- start flash banner  -->
+      <div class="flash-banner">
+        <div class="groupBtn">
+          <a class="" [ngClass]="{'active': tab===i}" nz-button nzType="default" *ngFor="let item of getOfBrandData; let i = index" (click)="tab = i" (click)="getProductOfBrand(item.id)" >
+            {{item.name}}
+          </a>
+       </div>
+      </div>
+      <!-- end flash banner  -->
+      <!-- start main flash product  -->
+      <div class="flash-products">
+        <!-- single product item  -->
+        <div class="product-item" *ngFor="let item of getOfProductData">
+          <div class="item">
+            <a [routerLink]="['/dien-thoai', item.id]">
+              <div class="lable-item">
+                <div><span >Sale 0%</span></div>
+              </div>
+              <div class="img-item">
+                <img
+                  [src]="item.image"
+                  alt=""
+                />
+              </div>
+              <div class="result-item-sale"></div>
+              <h3>{{item.name}}</h3>
+              <div class="mini-option">
+
+              </div>
+              <div class="brand-item" *ngFor="let brand of getOfBrandData">
+                <a href="#" *ngIf="item.branD_ID === brand.id">{{brand.name}}</a>
+              </div>
+              <div class="price-item">
+                <p class="price">{{item.saleprice === 0 ? (item.price | currency: "VND") : (item.saleprice | currency: "VND") }}</p>
+                <p class="old-price">{{item.saleprice === 0 ? "" : item.price | currency: "VND"}}</p>
+              </div>
+              <div class="vote-item">
+                <!-- <nz-rate [(ngModel)]="value" [nzTooltips]="tooltips"></nz-rate>
+                <span *ngIf="value" class="ant-rate-text">{{ value }}</span> -->
+              </div>
+            </a>
+          </div>
+        </div>
+        <!-- end single product item -->
+      </div>
+      <!-- end main flash product  -->
+      <!-- button item view all product  -->
+      <div class="view-products-item">
+        <!-- <div class="button-item">
+          <a href="#">
+            <div class="txt-item">
+              Xem tất cả
+              <i nz-icon nzType="caret-right" nzTheme="outline"></i>
+            </div>
+          </a>
+        </div> -->
+      </div>
+      <!-- end button item  -->
+
+    </div>
+
+    <div class="tien__ich">
+      <p class="bigtitle">Dịch vụ tiện ích</p>
+      <div class="dichvu_box">
+        <div class="dichvu_item">
+
+        </div>
+        <div class="dichvu_item">
+
+        </div>
+        <div class="dichvu_item">
+
+        </div>
+        <div class="dichvu_item">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end main content  -->
+</section>

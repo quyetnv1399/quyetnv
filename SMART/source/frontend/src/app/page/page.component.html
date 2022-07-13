@@ -1,0 +1,278 @@
+<div class="banner-header">
+  <div class="banner"></div>
+</div>
+
+<div class="hotline-phone-ring-wrap">
+  <div class="hotline-phone-ring">
+      <div class="hotline-phone-ring-circle"></div>
+      <div class="hotline-phone-ring-circle-fill"></div>
+      <div class="hotline-phone-ring-img-circle">
+      <a href="tel:0123456789" class="pps-btn-img">
+          <img src="https://isharevn.net/wp-content/uploads/2021/05/icon-call-nh.png" alt="Gọi điện thoại" width="50">
+      </a>
+      </div>
+  </div>
+  <div class="hotline-bar">
+      <a href="tel:0123456789">
+          <span class="text-hotline">0123.456.789</span>
+      </a>
+  </div>
+</div>
+
+<div class="hotline-phone-ring-wrap-zalo">
+  <div class="hotline-phone-ring-zalo">
+      <div class="hotline-phone-ring-circle-zalo"></div>
+      <div class="hotline-phone-ring-circle-fill-zalo"></div>
+      <div class="hotline-phone-ring-img-circle-zalo">
+      <a href="https://zalo.me/0213456789" class="pps-btn-img-zalo">
+          <img src="https://www.dienmayphuckhanh.vn/wp-content/plugins/button-contact-vr/img/zalo.png" alt="Gọi điện thoại" width="50">
+      </a>
+      </div>
+  </div>
+</div>
+
+<header class="header">
+  <div class="header__memu">
+    <section>
+<!-- desktop  -->
+      <div class="header-content">
+        <div class="logo__header">
+          <a class="logo-header">
+            <i class="icon-logo"></i>
+            <p><a href="" style="color: #fff">SMASK</a></p>
+          </a>
+        </div>
+
+        <div class="form__search">
+          <nz-input-group class="nz__group" [nzSuffix]="suffixIconSearch">
+            <input
+              type="text"
+              class="input__search"
+              nz-input
+              placeholder="Bạn tìm gì..."
+            />
+          </nz-input-group>
+          <ng-template #suffixIconSearch>
+            <i style="cursor: pointer" nz-icon nzType="search"></i>
+          </ng-template>
+        </div>
+
+        <div class="btn-menu">
+          <a class="header__login" (click)="signIn()">
+            <i nz-icon nzType="user" nzTheme="outline"></i>
+            <span>Đăng nhập</span>
+          </a>
+          <a class="header__cart" (click)="showCart()">
+            <i nz-icon nzType="shopping-cart" nzTheme="outline"></i>
+            <span>Giỏ hàng</span>
+          </a>
+          <a href="#" class="header__support">
+            <i nz-icon nzType="question-circle" nzTheme="outline"></i>
+            <span>Hỗ trợ</span>
+          </a>
+          <a class="header__hotline" (click)="lienHe()">
+            <i nz-icon nzType="phone" nzTheme="outline"></i>
+            <span>Liên hệ cửa hàng</span>
+          </a>
+        </div>
+      </div>
+<!-- end desktop  -->
+<!-- mobile  -->
+      <div class="mobileHeader header-content">
+        <div class="logo__header">
+
+          <a class="logo-header">
+            <i class="icon-logo"></i>
+            <p><a href="" style="color: #fff">SMASK</a></p>
+          </a>
+          <div class="mobile__menu">
+            <button nz-button [nzSize]="size" nzType="default" (click)="modalMenu()"><i nz-icon nzType="menu" nzTheme="outline"></i></button>
+          </div>
+
+        </div>
+
+        <div class="mobileForm form__search">
+          <nz-input-group class="nz__group" [nzSuffix]="suffixIconSearch">
+            <input
+              type="text"
+              class="input__search"
+              nz-input
+              placeholder="Bạn tìm gì..."
+            />
+          </nz-input-group>
+          <ng-template #suffixIconSearch>
+            <i style="cursor: pointer" nz-icon nzType="search"></i>
+          </ng-template>
+          <div class="cart-mobile" (click)="showCart()">
+            <i nz-icon nzType="shopping-cart" nzTheme="outline"></i>
+          </div>
+        </div>
+
+      </div>
+<!-- end mobile  -->
+    </section>
+  </div>
+</header>
+
+<div class="header__main">
+  <section>
+    <div class="category">
+      <div class="category__txt">
+        <span>Danh mục</span>
+        <i nz-icon nzType="caret-down" nzTheme="outline"></i>
+        <div class="bar-top-left-home">
+          <ul class="sub__menu">
+            <li class="item1" *ngFor="let parentCate of getCateParent">
+              <div class="ctn-item-menu">
+                <a class="hv__sub1" [href]="'/danh-muc/'">
+                  {{parentCate.name}}<i nz-icon nzType="right" nzTheme="outline"></i>
+                </a>
+              </div>
+              <div class="sub-menu-w" style="padding: 0 10px 10px 20px">
+                <div *ngFor="let cate of getCategory">{{cate.parenT_ID === parentCate.id ? cate.name : ""}}</div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <a routerLink="/danh-muc">Tất cả nhóm hàng</a>
+    </div>
+    <div class="sp__km"></div>
+  </section>
+</div>
+
+<div class="orther" *ngIf="showOther">
+
+</div>
+
+<section>
+  <div class="home-banner" *ngIf="showMenu">
+    <div
+      id="carouselExampleIndicators"
+      class="carousel slide crs-inner"
+      data-ride="carousel"
+    >
+      <ol class="carousel-indicators">
+        <li
+          data-target="#carouselExampleIndicators"
+          [ngClass]="{ active: i === 0 }"
+          *ngFor="let item of getOfBannerData; let i = index"
+          [attr.data-slide-to]="i"
+        ></li>
+      </ol>
+      <div class="carousel-inner">
+        <div
+          class="carousel-item"
+          [ngClass]="{ active: i === 0 }"
+          *ngFor="let item of getOfBannerData; let i = index"
+        >
+          <img
+            class="d-block w-100"
+            [src]="item.name"
+          />
+        </div>
+      </div>
+      <a
+        class="carousel-control-prev"
+        href="#carouselExampleIndicators"
+        role="button"
+        data-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a
+        class="carousel-control-next"
+        href="#carouselExampleIndicators"
+        role="button"
+        data-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+    <!-- <img class="img-banner" src="" alt=""> -->
+  </div>
+</section>
+
+<router-outlet></router-outlet>
+
+<footer>
+  <section>
+    <div class="flex__footer">
+      <div class="top-footer">
+        <div class="box-footer dv">
+          <p>Dịch vụ SMASK</p>
+          <ul>
+            <li><a href="#">Dành cho Gia đình, Doanh nghiệp</a></li>
+          </ul>
+        </div>
+        <div class="box-footer about">
+          <p>Thông tin SMASK</p>
+          <ul>
+            <li><a href="#">Giới thiệu</a></li>
+            <li><a href="#">Tuyển dụng </a></li>
+            <li><a href="#">Góp ý, khiếu nại </a></li>
+          </ul>
+        </div>
+        <div class="box-footer hotro">
+          <p>Liên hệ cửa hàng</p>
+          <ul>
+            <li><a href="#">Cửa hàng hỗ trợ(24/7)</a></li>
+            <li style="margin-right: 5px">
+              <b>Kho: </b
+              ><a href="#">
+                TP.Hà Nội</a
+              >
+            </li>
+            <li><b>Hotline: </b><a href="#">123456789</a></li>
+          </ul>
+        </div>
+        <div class="box-footer chungnhan">
+          <p>Kết nối cộng đồng</p>
+          <ul style="display: flex">
+            <li>
+              <a href="#">
+                <i
+                  style="color: #007bff; font-size: 30px"
+                  nz-icon
+                  nzType="facebook"
+                  nzTheme="outline"
+                ></i
+              ></a>
+            </li>
+            &nbsp;&nbsp;
+            <li>
+              <a href="#">
+                <i
+                  style="color: #007bff; font-size: 30px"
+                  nz-icon
+                  nzType="instagram"
+                  nzTheme="outline"
+                ></i
+              ></a>
+            </li>
+            &nbsp;&nbsp;
+            <li>
+              <a href="#">
+                <i
+                  style="color: #007bff; font-size: 30px"
+                  nz-icon
+                  nzType="twitter"
+                  nzTheme="outline"
+                ></i
+              ></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="coppy-right-footer">
+    <section>
+      <div class="coppy-r">
+        <p>Copyright 2022 © dienmaythanhphat</p>
+      </div>
+    </section>
+  </div>
+</footer>

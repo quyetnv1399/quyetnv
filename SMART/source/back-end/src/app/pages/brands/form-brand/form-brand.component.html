@@ -1,0 +1,43 @@
+<div class="errorLayout">
+  <span class="errMessage" *ngIf="profileForm.get('image')!.touched && profileForm.get('image')!.errors?.['required']" >* Logo không để trống!!</span>
+  <span class="errMessage" *ngIf="profileForm.get('name')!.touched && profileForm.get('name')!.errors?.['required']" >* Tên thương hiệu không để trống!!</span>
+</div>
+
+<form [formGroup]="profileForm">
+  <div class="layout">
+    <div class="form">
+
+      <div class="mb-3 flexF">
+        <label class="form-label lableWidth"><span style="color:red">*</span>Logo:</label>
+        <input type="file" class="form-control fctrl"  (change)="onSelectFile($event)" id="file"
+        [ngClass]="{'errorImage' : profileForm.get('image')!.touched && profileForm.get('image')!.errors?.['required'] }"
+        >
+      </div>
+
+      <div class="line_lable"></div>
+
+      <div class="mb-3 flexF">
+        <label class="form-label lableWidth"><span style="color:red">*</span>Tên thương hiệu:</label>
+        <input type="text" class="form-control fctrl" formControlName="name" placeholder="...">
+      </div>
+
+    </div>
+  </div>
+</form>
+
+<div class="layout">
+  <div class="form">
+
+    <div class="mb-3 flexF">
+      <label class="form-label lableWidth" style="width: 256px"><span style="color:red"></span>Hiển thị:</label>
+      <label nz-checkbox [ngModel]="ngChecked" [nzIndeterminate]="false" (ngModelChange)="showMoreControls($event)"></label>
+    </div>
+
+  </div>
+</div>
+
+<div class="btn_form">
+  <button type="button" class="btn btn-primary" (click)="onSubmitForm()">Lưu</button>
+  <button type="button" class="btn btn-secondary" (click)="onCloseTab()">Thoát</button>
+</div>
+

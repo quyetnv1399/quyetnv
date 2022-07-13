@@ -1,0 +1,36 @@
+.content-modal{
+  display: flex;
+  padding: 10px;
+}
+.in4{
+  width: 100%;
+  height: auto;
+  padding-right: 5px;
+  display: flex;
+  ul{
+    list-style-type: none;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    li{
+      display: flex;
+      border-bottom: 1px solid #ddd;
+      line-height: 35px;
+      padding-left: 10px;
+      p{
+        margin: 0;
+        font-weight: bold;
+        font-size: 16px;
+      }
+      .span1{
+        width: 180px;
+        font-weight: 500;
+        font-size: 15px;
+      }
+      .span2{
+        width: 320px;
+        margin-left: 20px;
+      }
+    }
+  }
+}

@@ -1,0 +1,176 @@
+
+
+  <form [formGroup]="profileForm" >
+    <div class="layout">
+      <div class="form">
+
+      <div class="mb-3 flexF">
+        <label class="form-label lableWidth"><span style="color:red">*</span>Ảnh:</label>
+        <input type="file" class="form-control fctrl"  (change)="onSelectFile($event)" id="file"
+        [ngClass]="{'errorImage' : profileForm.get('image')!.touched && profileForm.get('image')!.errors?.['required'] }"
+        >
+      </div>
+      <span class="errMessage" *ngIf="profileForm.get('image')!.touched && profileForm.get('image')!.errors?.['required']" >* Ảnh không để trống!!</span>
+      <div class="line_lable"></div>
+
+        <div class="input-group mb-3 flexF">
+          <label class="form-label lableWidth ww-262"><span style="color:red">*</span>Danh mục:</label>
+          <select class="form-select fctrl bd-6" formControlName="category" (change)="changeCate($event)"
+          [ngClass]="{'errorImage' : profileForm.get('category')!.touched && profileForm.get('category')!.errors?.['required'] }"
+          >
+            <option value="">Open this select menu</option>
+            <option [value]="item.id" *ngFor="let item of listOfDataCate"  >{{item.name}}</option>
+          </select>
+          <select class="form-select fctrl" *ngIf="miniCateOption; else selectFalse">
+            <option value="">Open this select menu</option>
+          </select>
+          <ng-template #selectFalse>
+            <select class="form-select fctrl"  formControlName="categoryParent"
+              [ngClass]="{'errorImage' : profileForm.get('categoryParent')!.touched && profileForm.get('categoryParent')!.errors?.['required'] }"
+            >
+              <option value="">Open this select menu</option>
+              <option *ngFor="let item of listOfDataCateParent" [value]="item.id">{{item.name}}</option>
+            </select>
+          </ng-template>
+        </div>
+        <span class="errMessage" *ngIf="profileForm.get('category')!.touched && profileForm.get('category')!.errors?.['required']" >* Chọn một danh mục !!</span>
+        <span class="errMessage" *ngIf="profileForm.get('categoryParent')!.touched && profileForm.get('categoryParent')!.errors?.['required']" >* Chọn một danh mục !!</span>
+        <div class="line_lable"></div>
+
+        <div class="mb-3 flexF">
+          <label class="form-label lableWidth"><span style="color:red">*</span>Mã sản phẩm:</label>
+          <input type="text" class="form-control fctrl" placeholder="..." formControlName="code_product">
+        </div>
+        <span class="errMessage" *ngIf="profileForm.get('code_product')!.touched && profileForm.get('code_product')!.errors?.['required']" >* Mã sản phẩm không để trống!!</span>
+        <div class="line_lable"></div>
+
+        <div class="mb-3 flexF">
+          <label class="form-label lableWidth"><span style="color:red">*</span>Tên sản phẩm:</label>
+          <input type="text" class="form-control fctrl" placeholder="..." formControlName="name">
+        </div>
+        <span class="errMessage" *ngIf="profileForm.get('name')!.touched && profileForm.get('name')!.errors?.['required']" >* Tên sản phẩm không để trống!!</span>
+        <div class="line_lable"></div>
+
+        <div class="mb-3 flexF">
+          <label class="form-label lableWidth"><span style="color:red">*</span>Thương hiệu:</label>
+          <select class="form-select fctrl" aria-label="Default select example" formControlName="brand"
+          [ngClass]="{'errorImage' : profileForm.get('brand')!.touched && profileForm.get('brand')!.errors?.['required'] }"
+          >
+            <option value="">Open this select menu</option>
+            <option [value]="item.id" *ngFor="let item of listOfDataBrand">{{item.name}}</option>
+          </select>
+        </div>
+        <span class="errMessage" *ngIf="profileForm.get('brand')!.touched && profileForm.get('brand')!.errors?.['required']" >* Tên thương hiệu không để trống!!</span>
+
+      </div>
+    </div>
+
+    <div class="layout">
+      <div class="form">
+
+        <div class="input-group mb-3 flexF">
+          <label class="form-label lableWidth ww-262"><span style="color:red">*</span>Giá sản phẩm (VNĐ):</label>
+          <input type="text" class="form-control fctrl bd-6" placeholder="..." formControlName="price">
+          <input type="number" class="form-control fctrl" placeholder="..." formControlName="priceFormat" readonly>
+        </div>
+        <span class="errMessage" *ngIf="profileForm.get('price')!.touched && profileForm.get('price')!.errors?.['required']" >* Giá sản phẩm không được để trống, phải bắt đầu bằng 0!!</span>
+
+        <div *ngIf="showOnSalePrice">
+          <div class="line_lable"></div>
+
+          <div class="mb-3 flexF" >
+            <label class="form-label lableWidth"><span style="color:red">*</span>Giảm giá (%):</label>
+            <input type="number" class="form-control fctrl" placeholder="..." formControlName="sale_price">
+          </div>
+          <span class="errMessage" *ngIf="profileForm.get('sale_price')!.touched && profileForm.get('sale_price')!.errors?.['required']" >* Giảm giá không được để trống, phải bắt đầu bằng 0!!</span>
+          <div class="line_lable"></div>
+
+          <div class=" mb-3 flexF">
+            <label class="form-label lableWidth ww-262 ">
+              <span style="color:red">*</span>Ngày giảm giá (bắt đầu/kết thúc)
+              <input type="checkbox" (change)="changeDateSale($event)" [value]="ngDisable">
+            </label>
+           <div class="input-group" style="width: 72%;" *ngIf="ngDisable; else elseTrue">
+            <input type="datetime-local" class="form-control fctrl bd-6 " formControlName="start_date" >
+            <input type="datetime-local" class="form-control fctrl"  formControlName="end_date" >
+           </div>
+           <ng-template #elseTrue>
+            <div class="input-group" style="width: 72%;">
+              <input type="datetime-local" class="form-control fctrl bd-6 " readonly >
+              <input type="datetime-local" class="form-control fctrl" readonly >
+            </div>
+           </ng-template>
+          </div>
+
+          <div class="line_lable"></div>
+
+          <div class="input-group mb-3 flexF">
+            <label class="form-label lableWidth ww-262"><span style="color:red">*</span>Giá sale (VNĐ):</label>
+            <input type="text" class="form-control fctrl bd-6" placeholder="..." formControlName="price_after_sale" readonly>
+            <input type="number" class="form-control fctrl " placeholder="..." formControlName="price_after_sale_format" readonly>
+          </div>
+          <span class="errMessage" *ngIf="profileForm.get('price_after_sale_format')!.touched && profileForm.get('price_after_sale_format')!.errors?.['required']" >* Giá đã giảm không được để trống, phải bắt đầu bằng 0!!</span>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="layout">
+      <div class="form">
+
+        <div class="mb-3 flexF">
+          <label class="form-label lableWidth"><span style="color:red">*</span>Số lượng hàng:</label>
+          <input type="number" class="form-control fctrl" placeholder="..." formControlName="quantity" >
+        </div>
+        <span class="errMessage" *ngIf="profileForm.get('quantity')!.touched && profileForm.get('quantity')!.errors?.['required']" >* Số lượng hàng không được để trống hoặc bằng 0, phải bắt đầu bằng 1 !!</span>
+        <div class="line_lable"></div>
+
+        <div class="mb-3 flexF">
+          <label class="form-label lableWidth"><span style="color:red">*</span>Lượt xem:</label>
+          <input type="number" class="form-control fctrl" placeholder="..." formControlName="view">
+        </div>
+        <span class="errMessage" *ngIf="profileForm.get('view')!.touched && profileForm.get('view')!.errors?.['required']" >* Lượt xem được để trống, phải bắt đầu bằng 0!!</span>
+
+      </div>
+    </div>
+
+
+    <div class="layout">
+      <div class="form">
+
+        <div class="mb-3 flexF">
+          <label class="form-label lableWidth"><span style="color:red"></span>Mô tả ngắn:</label>
+          <textarea class="form-control" rows="5" formControlName="description"></textarea>
+        </div>
+
+      </div>
+    </div>
+
+  </form>
+
+  <div class="layout">
+    <div class="form-checkbox">
+
+      <div class="mb-3 checkBox">
+        <label class="form-label lableWidthCheckBox"><span style="color:red"></span>Mới:</label>
+        <label nz-checkbox [(ngModel)]="ngUnCheckedNew" [nzIndeterminate]="false" (ngModelChange)="showMoreControlNews($event)"></label>
+      </div>
+
+      <div class="mb-3 checkBox">
+        <label class="form-label lableWidthCheckBox"><span style="color:red"></span>Hot:</label>
+        <label nz-checkbox [(ngModel)]="ngUnCheckedHot" [nzIndeterminate]="false" (ngModelChange)="showMoreControlHots($event)"></label>
+      </div>
+
+      <div class="mb-3 checkBox">
+        <label class="form-label lableWidthCheckBox"><span style="color:red"></span>Hiển thị:</label>
+        <label nz-checkbox [(ngModel)]="ngChecked" [nzIndeterminate]="false" (ngModelChange)="showMoreControls($event)"></label>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="btn_form">
+    <button type="button" class="btn btn-primary" (click)="onSubmitForm()">Lưu</button>
+    <button type="button" class="btn btn-secondary" (click)="onCloseTab()">Thoát</button>
+  </div>

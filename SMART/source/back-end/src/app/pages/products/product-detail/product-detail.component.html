@@ -1,0 +1,40 @@
+<div class="content-modal">
+
+  <div class="in4" >
+    <ul *ngIf="product">
+      <li style="background: #ddd; display: flex; justify-content: space-between;"><p>Sản phẩm</p> <div style="margin-right: 10px">
+        <a nz-button nzType="link" title="edit">
+        <i nz-icon nzType="setting" nzTheme="outline"></i> Chỉnh sửa
+      </a></div></li>
+      <li><div class="span1">Mã sản phẩm: </div> <div class="span2">{{product.codE_PRODUCT}}</div></li>
+      <li><div class="span1">Loại sản phẩm: </div> <div class="span2" *ngIf="category" >{{category.name}}</div></li>
+      <li><div class="span1">Tên sản phẩm: </div> <div class="span2">{{product.name}}</div></li>
+      <li><div class="span1">Giá:  </div> <div class="span2">{{product.price | currency: "VND"}}</div></li>
+      <li><div class="span1">Giảm giá: </div> <div class="span2" *ngIf="dateSaleProduct" >{{dateSaleProduct.salevalue}}%</div></li>
+      <li><div class="span1">Giá sale: </div> <div class="span2">{{product.saleprice | currency: "VND"}}</div></li>
+      <li><div class="span1">Ngày bắt đầu giảm giá: </div> <div class="span2" *ngIf="dateSaleProduct" >{{dateSaleProduct.startdate | date: 'dd/MM/yyyy hh:mm a'}}</div></li>
+      <li><div class="span1">Ngày kết thúc giảm giá: </div> <div class="span2" *ngIf="dateSaleProduct" >{{dateSaleProduct.enddate | date: 'dd/MM/yyyy hh:mm a'}}</div></li>
+      <li><div class="span1">Số lượng: </div> <div class="span2">{{product.quantity}}</div></li>
+      <li><div class="span1">Lượt xem: </div> <div class="span2">{{product.view}}</div></li>
+      <li><div class="span1">Mô tả ngắn: </div> <div class="span2">{{product.description}}</div></li>
+      <li><div class="span1">Thương hiệu: </div> <div class="span2" *ngIf="brand" ><span style="color: #1890ff;">{{brand.name}}</span></div></li>
+      <li><div class="span1">New: </div> <div class="span2">{{product.isnew === true ? "Sản phẩm MỚI" : "Không"}}</div></li>
+      <li><div class="span1">Hot: </div> <div class="span2"><span style="color: red;">{{product.ishot === true ? "Sản phẩm NỔI BẬT" : "Không"}}</span></div></li>
+      <li><div class="span1">Hiển thị: </div> <div class="span2"><span style="color: green;">{{product.isactive === true ? "Đang hiển thị" : "Không"}}</span></div></li>
+    </ul>
+  </div>
+
+  <div class="in4" >
+    <ul >
+      <li style="background: #ddd; display: flex; justify-content: space-between;"><p>Thông tin kỹ thuật</p> <div style="margin-right: 10px">
+        <a nz-button nzType="link" title="edit" (click)="addAtr()">
+        <i nz-icon nzType="setting" nzTheme="outline"></i> Chỉnh sửa
+        </a></div></li>
+      <li><div class="span1">Loại máy</div> <div class="span2"></div></li>
+      <li><div class="span1">Inverter:</div> <div class="span2"></div></li>
+    </ul>
+  </div>
+
+
+</div>
+

@@ -1,0 +1,183 @@
+<div class="lable-space"></div>
+<section *ngIf="findProduct">
+  <div class="title-detail">
+    <p>{{findProduct.name}}</p>
+  </div>
+  <div class="content-detail">
+    <div class="detail-left">
+      <div class="brand-logo" *ngFor="let item of listOfDataBrand">
+        <img *ngIf="item.id === findProduct.branD_ID" [src]="item.image" width="100" alt="">
+      </div>
+      <div class="carousel-detail-product">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img class="d-block w-100" [src]="findProduct.image" alt="First slide">
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+      <div class="table-description">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th><span></span></th>
+              <th><span></span></th>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="detail-right">
+      <div class="box-right-content">
+        <div class="small-title">
+          <p>
+            <span></span> - <span>Thương hiệu: <a [href]="'/thuong-hieu/' + findProduct.branD_ID" *ngFor="let item of listOfDataBrand">{{item.id === findProduct.branD_ID ? item.name : "" }}</a></span>
+          </p>
+          <p>Bảo hành: <b>
+            <span *ngIf="getFindOProductId"> {{getFindOProductId.baohanH_CUCLANH}}</span> - <span *ngIf="getFindOProductId"> {{getFindOProductId.baohanH_CUCNONG}}</span>
+          </b></p>
+        </div>
+        <div class="price-detail">
+          <p class="price">{{findProduct.saleprice === 0 ? (findProduct.price | currency: "VND") : (findProduct.saleprice | currency: "VND") }}</p>
+          <p class="old-price">{{findProduct.saleprice === 0 ? "" : findProduct.price | currency: "VND"}}</p>
+        </div>
+        <div class="status">
+          <p>Trạng thái: &nbsp; &nbsp; &nbsp; <span>{{findProduct.quantity > 0 ? "Còn hàng" : "Hết hàng"}}</span></p>
+        </div>
+        <div class="quantity">
+          <p>Chọn số lượng: &nbsp;</p>
+          <div class="number-box">
+          <nz-input-number [(ngModel)]="demoValue" [nzMin]="1" [nzMax]="10" [nzStep]="1"></nz-input-number>
+          </div>
+        </div>
+        <div class="cart-detail" *ngIf="findProduct.quantity > 0; else elseButton">
+          <button nz-button nzType="primary" [nzSize]="'large'" (click)="cartCheckout(findProduct.id)">
+            <i nz-icon nzType="shopping-cart" nzTheme="outline"></i>
+            <span>Đặt mua</span>
+          </button>
+        </div>
+        <ng-template #elseButton>
+          <div class="cart-detail" *ngIf="findProduct.quantity === 0">
+            <button nz-button nzType="primary" [nzSize]="'large'" [disabled]="true">
+              <i nz-icon nzType="shopping-cart" nzTheme="outline"></i>
+              <span>Đặt mua</span>
+            </button>
+          </div>
+        </ng-template>
+
+        <div class="description-detail">
+          <p><b>Đặc điểm nổi bật:</b> </p>
+          <p class="mota">
+            {{findProduct.description}}
+          </p>
+        </div>
+        <div class="ho-tro">
+          <p>Hỗ trợ 24/7:</p>
+          <a>19001000</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="box-control-detail">
+    <div class="thong-tin-them">
+      <div class="detail-about-product">
+        <p class="title">Giới thiệu</p>
+        <div class="lines-lable"></div>
+      </div>
+      <div class="detail-about-product">
+        <p class="title">Thông số kỹ thuật</p>
+        <div class="lines-lable"></div>
+        <!-- <table class="table table-borderless">
+          <tr>
+            <th>Các loại điều hòa</th>
+            <th>Diện tích sử dụng </th>
+          </tr>
+          <tr>
+            <td>1 chiều</td>
+            <td>12m2</td>
+          </tr>
+        </table> -->
+        <div class="body-specs">
+          <ul>
+            <li><span>RAM</span><span>16GB</span></li>
+            <li><span>CPU</span><span></span></li>
+          </ul>
+          <br>
+          <div style="width:100%;" class="btn-pre">
+            <div style="margin: auto; width:50%">
+              <button class="btn__pre" nz-button nzType="default" (click)="viewAbout()">Xem chi tiết thông số <i nz-icon nzType="caret-right" nzTheme="outline"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="san-pham-tuong-tu">
+      <!-- <div class="title-sp-lienquan">
+        <p>Sản phẩm liên quan</p>
+      </div>
+      <div class="box-pd">
+        <img src="https://www.dienmayphuckhanh.vn/wp-content/uploads/2021/01/%C4%90i%E1%BB%81u-h%C3%B2a-Panasonic-inverter-XPU12XKH-8.jpg" alt="">
+        <div class="text-content">
+          <p class="name-product"><a>Điều hòa abcd dalshdahsdj 9000 BTU Inverter</a></p>
+          <p class="brand-tc">Funuki</p>
+          <p class="price-tc">5.900.000 đ &nbsp; <span>7.900.000 đ</span></p>
+        </div>
+      </div>
+      <div class="box-pd">
+        <img src="https://www.dienmayphuckhanh.vn/wp-content/uploads/2021/01/%C4%90i%E1%BB%81u-h%C3%B2a-Panasonic-inverter-XPU12XKH-8.jpg" alt="">
+        <div class="text-content">
+          <p class="name-product"><a>Điều hòa abcd dalshdahsdj 9000 BTU Inverter</a></p>
+          <p class="brand-tc">Funuki</p>
+          <p class="price-tc">5.900.000 đ &nbsp; <span>7.900.000 đ</span></p>
+        </div>
+      </div>
+      <div class="box-pd">
+        <img src="https://www.dienmayphuckhanh.vn/wp-content/uploads/2021/01/%C4%90i%E1%BB%81u-h%C3%B2a-Panasonic-inverter-XPU12XKH-8.jpg" alt="">
+        <div class="text-content">
+          <p class="name-product"><a>Điều hòa abcd dalshdahsdj 9000 BTU Inverter</a></p>
+          <p class="brand-tc">Funuki</p>
+          <p class="price-tc">5.900.000 đ &nbsp; <span>7.900.000 đ</span></p>
+        </div>
+      </div>
+      <div class="box-pd">
+        <img src="https://www.dienmayphuckhanh.vn/wp-content/uploads/2021/01/%C4%90i%E1%BB%81u-h%C3%B2a-Panasonic-inverter-XPU12XKH-8.jpg" alt="">
+        <div class="text-content">
+          <p class="name-product"><a>Điều hòa abcd dalshdahsdj 9000 BTU Inverter</a></p>
+          <p class="brand-tc">Funuki</p>
+          <p class="price-tc">5.900.000 đ &nbsp; <span>7.900.000 đ</span></p>
+        </div>
+      </div>
+      <div class="box-pd">
+        <img src="https://www.dienmayphuckhanh.vn/wp-content/uploads/2021/01/%C4%90i%E1%BB%81u-h%C3%B2a-Panasonic-inverter-XPU12XKH-8.jpg" alt="">
+        <div class="text-content">
+          <p class="name-product"><a>Điều hòa abcd dalshdahsdj 9000 BTU Inverter</a></p>
+          <p class="brand-tc">Funuki</p>
+          <p class="price-tc">5.900.000 đ &nbsp; <span>7.900.000 đ</span></p>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</section>
+<div class="lable-space"></div>

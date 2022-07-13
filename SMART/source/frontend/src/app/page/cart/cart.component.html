@@ -1,0 +1,133 @@
+
+  <section>
+    <div class="flex_cart">
+      <div class="cart_left">
+        <div class="cart" *ngFor="let item of cart">
+          <div class="item_left">
+            <img class="img_item" [src]="item.product.image" alt="">
+            <div class="item_icon" (click)="removeItemCart(item.product.id)"><i nz-icon nzType="close-circle" nzTheme="fill"></i> Xóa</div>
+          </div>
+          <div class="item_right">
+            <div class="left_content">
+              <p class="title">{{item.product.name}}</p>
+              <p class="description"></p>
+              <small class="quantity">Số lượng: {{demoValue}}</small>
+            </div>
+            <div class="right_price">
+              <p class="sale_price">{{item.product.price  | currency: 'VND'}}</p>
+              <p class="price">{{item.product.olD_PRICE | currency: 'VND'}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="total_cart">
+          <p>Tổng giá <span>{{countProduct}}</span> sản phẩm: </p>
+          <p class="tongtien_product">{{total | currency: 'VND'}}</p>
+        </div>
+      </div>
+      <div class="user_info">
+        <p class="title_user">Thông tin khách hàng</p>
+
+        <form [formGroup]="profileForm" class="form" >
+
+          <div class="form-group checkbox_form">
+            <div class="form-check">
+              <input class="form-check-input" type="radio" formControlName="gender" [value]="1">
+              <label class="form-check-label" for="flexRadioDefault1">
+                Anh
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" formControlName="gender" [value]="2">
+              <label class="form-check-label" for="flexRadioDefault2">
+                Chị
+              </label>
+            </div>
+            <span class="errMessage" *ngIf="profileForm.get('gender')!.touched && profileForm.get('gender')!.errors?.['required']" >Vui lòng chọn giới tính !!</span>
+          </div>
+
+            <div class="row">
+              <div class="form-group col">
+                <input type="text" class="form-control" placeholder="Họ và Tên" formControlName="name">
+                <span class="errMessage" *ngIf="profileForm.get('name')!.touched && profileForm.get('name')!.errors?.['required']" >Vui lòng nhập tên !!</span>
+              </div>
+              <div class="form-group col">
+                <input type="number" class="form-control" placeholder="Số điện thoại" formControlName="phone">
+                <span class="errMessage" *ngIf="profileForm.get('phone')!.touched && profileForm.get('phone')!.errors?.['required']" >Vui lòng nhập số điện thoại !!</span>
+              </div>
+            </div>
+        </form>
+        <p class="title_user">Cách thức nhận hàng</p>
+          <form [formGroup]="profileForm">
+            <div class="form-group checkbox_form">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" formControlName="move" [value]="1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Giao hàng tận nơi
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" formControlName="move" [value]="2">
+                <label class="form-check-label" for="flexRadioDefault2">
+                  Nhận tại cửa hàng
+                </label>
+              </div>
+              <span class="errMessage" *ngIf="profileForm.get('move')!.touched && profileForm.get('move')!.errors?.['required']" >Vui lòng chọn cách thức vận chuyển !!</span>
+            </div>
+          </form>
+        <div class="control">
+            <p>Ghi rõ địa điểm và thời gian nhận hàng</p>
+            <form [formGroup]="profileForm">
+
+              <div>
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Địa chỉ" formControlName="address" >
+                  <span class="errMessage" *ngIf="profileForm.get('address')!.touched && profileForm.get('address')!.errors?.['required']" >Vui lòng nhập địa chỉ giao hàng !!</span>
+                </div>
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Thành phố" formControlName="city" >
+                  <span class="errMessage" *ngIf="profileForm.get('city')!.touched && profileForm.get('city')!.errors?.['required']" >Vui lòng nhập Thành Phố !!</span>
+                </div>
+                <div class="form-group">
+                  <label for="">Chọn ngày giao hàng</label>
+                  <select name="" class="form-select" formControlName="day" >
+                    <option value="1">Hôm nay</option>
+                    <option value="2">Ngày mai</option>
+                    <option value="3">Ngày kia</option>
+                  </select>
+                </div>
+              </div>
+              <!-- item for  -->
+              <div class="item_product" *ngFor="let item of cart">
+                <div class="cart">
+                  <div class="item_left">
+                    <img class="img_item" [src]="item.product.image" alt="">
+                  </div>
+                  <div class="item_right">
+                    <div class="left_content">
+                      <p class="title">{{item.product.name}}</p>
+                      <small class="quantity">Số lượng: <span>{{item.quantity}}</span></small>
+                    </div>
+                  </div>
+                </div>
+                <p class="free_ship">Miễn phí giao hàng</p>
+              </div>
+              <!-- end  -->
+            </form>
+        </div>
+        <form [formGroup]="profileForm">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Yêu cầu khác (không bắt buộc)" formControlName="note" >
+          </div>
+        </form>
+
+        <div class="checkout">
+          <div class="total_cart">
+            <p class="title_total">Tổng tiền</p>
+            <p class="tongtien_product">{{total | currency: 'VND'}}</p>
+          </div>
+          <div class="other" (click)="onSaveOrder()" ><a href="#">Đặt hàng</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+

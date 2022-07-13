@@ -1,0 +1,55 @@
+<form nz-form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+  <nz-form-item *ngFor="let control of listOfField; let i = index">
+    <nz-form-label [nzXs]="24" [nzSm]="4" *ngIf="i === 0" [nzFor]="control.controlName">
+      Passengers
+    </nz-form-label>
+    <nz-form-control
+      [nzXs]="24"
+      [nzSm]="20"
+      [nzOffset]="i === 0 ? 0 : 4"
+      nzErrorTip="Please input passenger's name or delete this field."
+    >
+      <input
+        class="passenger-input"
+        nz-input
+        placeholder="placeholder"
+        [attr.id]="control.indexId"
+        [formControlName]="control.controlName"
+      />
+      <i nz-icon nzType="minus-circle-o" class="dynamic-delete-button" (click)="removeField(control, $event)"></i>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control [nzXs]="{ span: 24, offset: 0 }" [nzSm]="{ span: 20, offset: 4 }">
+      <button nz-button nzType="dashed" class="add-button" (click)="addField($event)">
+        <i nz-icon nzType="plus"></i>
+        Add field
+      </button>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-control [nzXs]="{ span: 24, offset: 0 }" [nzSm]="{ span: 20, offset: 4 }">
+      <button nz-button nzType="primary">Submit</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>
+
+
+
+
+
+<!-- <form [formGroup]="profileForm" >
+
+  <div class="input-group" *ngFor="let item of listOfField; index as i">
+    <span class="input-group-text">Tên thuộc tính</span>
+    <input nz-input type="text" class="form-control"  placeholder="value..." [attr.id]="item.indexId" [formControlName]="item.controlName" >
+    <span class="input-group-text">Thông số</span>
+    <input nz-input type="number" class="form-control" placeholder="value..." [attr.id]="item.indexId" [formControlName]="item.controlValue">
+    <button class="btn btn-secondary" (click)="removeInput(i)">Xóa ô</button>
+  </div>
+
+</form>
+
+<label class="form-control addField" (click)="onAddIndex($event)" ><i nz-icon nzType="plus" nzTheme="outline"  ></i>Thêm 1 ô</label>
+
+<button class="btn btn-primary" (click)="onSubmit()" >Lưu dữ liệu</button> -->

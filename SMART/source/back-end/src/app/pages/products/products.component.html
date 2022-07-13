@@ -1,0 +1,53 @@
+<div class="button-add">
+  <button nz-button [nzSize]="size" nzType="primary" (click)="onAdd()">
+    <i nz-icon nzType="plus" nzTheme="outline"></i>
+    Thêm mới
+  </button>
+</div>
+<nz-table
+#rowSelectionTable
+nzShowSizeChanger
+[nzData]="listOfData"
+(nzCurrentPageDataChange)="onCurrentPageDataChange($event)"
+>
+<thead>
+  <tr>
+    <th
+      [nzSelections]="listOfSelection"
+      [(nzChecked)]="checked"
+      [nzIndeterminate]="indeterminate"
+      (nzCheckedChange)="onAllChecked($event)"
+    ></th>
+    <th>Ảnh sản phẩm</th>
+    <th>Mã sản phẩm</th>
+    <th style="width: 20%">Tên sản phẩm</th>
+    <th>Giá(VNĐ)</th>
+    <th>Danh mục</th>
+    <th>Mới</th>
+    <th>Hot</th>
+    <th>Hiển thị</th>
+    <th>Hành động</th>
+  </tr>
+</thead>
+<tbody>
+  <tr *ngFor="let data of rowSelectionTable.data; index as i">
+    <td [nzChecked]="setOfCheckedId.has(data.id)" (nzCheckedChange)="onItemChecked(data.id, $event)"></td>
+    <td><img [src]="data.image" width="80" alt=""></td>
+    <td>{{ data.codE_PRODUCT }}</td>
+    <td>{{ data.name }}</td>
+    <td>
+      <span *ngIf="data.price !== 0; else thenSalePrice">{{data.price | currency: 'VND'}}</span>
+      <ng-template #thenSalePrice><span>{{data.saleprice | currency: 'VND'}}</span></ng-template>
+    </td>
+    <td><div *ngFor="let cate of listOfDataCate"><span *ngIf="cate.id === data.categorY_ID" >{{cate.name}}</span></div> </td>
+    <td><label nz-checkbox [ngModel]="data.isnew" [nzIndeterminate]="false"></label></td>
+    <td><label nz-checkbox [ngModel]="data.ishot" [nzIndeterminate]="false"></label></td>
+    <td><label nz-checkbox [ngModel]="data.isactive" [nzIndeterminate]="false"></label></td>
+    <td class="icon_action">
+        <i nz-icon nzType="info-circle" nzTheme="outline" title="Chi tiết" (click)="onEventDetail(data.id)"></i>
+        <i nz-icon nzType="edit" nzTheme="outline" title="Sửa" (click)="onEdit(data.id)"></i>
+        <i nz-icon nzType="delete" nzTheme="outline" title="Xóa"  (click)="remove(data.id)" ></i>
+    </td>
+  </tr>
+</tbody>
+</nz-table>

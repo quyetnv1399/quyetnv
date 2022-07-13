@@ -1,0 +1,20 @@
+th{
+  font-size: 11px;
+}
+
+td{
+  font-size: 11px;
+}
+
+.icon_action{
+  i{
+    margin-left: 10px;
+    font-size: 15px;
+    cursor: pointer;
+  }
+}
+.button-add{
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 1rem;
+}

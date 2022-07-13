@@ -1,0 +1,11 @@
+﻿b1. Cài đặt ef core bằng lệnh: dotnet tool install --global dotnet-ef
+
+b2. Bật PowerShell (Shift + chuột phải chọn PowerShell) tại thư mục Dao
+b3. Chạy 1 trong các lện dưới đây tùy vào loại db sử dụng
+
+b3.1 chay lenh: dotnet add package Microsoft.EntityFrameworkCore.Design --version 6.0.2
+b3.2 chay lenh: dotnet add package Microsoft.EntityFrameworkCore.SqlServer --version 6.0.2
+
+dotnet ef dbcontext scaffold "Server=vnpost.ddns.net;Database=DUCNV_SMART;Uid=sa;Pwd=bccp@123" Microsoft.EntityFrameworkCore.SqlServer -c ApplicationDbContext --use-database-names --json -o DAO -f
+
+ 
